@@ -1,26 +1,22 @@
 import React, {Component} from 'react';
+import {Container} from 'reactstrap'
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
-
+import TopAnimePages from  './pages/topanimepages/topanimepages'
+import Navbars from './components/navbar/navbar'
 class App extends Component {
-  constructor(props){
-    super(props);
-    this.state={
-      anime:{}
-    }
-    this.getAnime();
-  }
   
-  getAnime = async() =>{
-    const api_call= await fetch(`https://api.jikan.moe/v3/top/anime/1/bypopularity`)
-    const response = await api_call.json()
-    console.log(response)
-  }
-  const
     render() {
+      
         return (
-                <div>
-                  
-                </div>            
+          <Router>
+            <Container>
+              <Navbars/>
+              <h1 className="text-center">Top 50 popular Anime</h1>
+            <Switch>
+              <Route exact path='/' component={TopAnimePages}/>
+            </Switch>
+            </Container>
+          </Router>
         );
     }
 }
