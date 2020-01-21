@@ -24,9 +24,10 @@ class TopAnimePages extends Component {
     render() {
       const {animes} = this.state;
         return (
-          
+          <React.Fragment>
+          <h1 className="text-center">Top 50 popular Anime</h1>
                   <AnimeList animes={animes}/>
-                
+                  </React.Fragment>
         );
     }
 }

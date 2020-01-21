@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import {Container} from 'reactstrap'
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import TopAnimePages from  './pages/topanimepages/topanimepages'
+import Review from './components/review/review'
+import Search from './components/search/search'
 import Navbars from './components/navbar/navbar'
 class App extends Component {
   
@@ -11,9 +13,10 @@ class App extends Component {
           <Router>
             <Container>
               <Navbars/>
-              <h1 className="text-center">Top 50 popular Anime</h1>
+              <Search/>
             <Switch>
               <Route exact path='/' component={TopAnimePages}/>
+              <Route exact path='/animereview/:Id' component={Review}/>
             </Switch>
             </Container>
           </Router>
