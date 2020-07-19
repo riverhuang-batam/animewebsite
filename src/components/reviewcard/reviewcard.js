@@ -1,8 +1,14 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {Card, CardBody} from 'reactstrap'
 import Moment from 'react-moment'
-const ReviewCard = ({review}) => (
-    <Card className="mt-4">
+import './reviewcard.css'
+const ReviewCard = ({review}) => {
+    const [show, setShow] = useState(true)
+    const showAll = () => setShow(false)
+    const showLess = () => setShow(true)
+    const MAX_LENGTH = 250
+    return(
+        <Card className="mt-4">
         <CardBody>
             <div key={review.mal_id}>
                 <img
@@ -16,7 +22,30 @@ const ReviewCard = ({review}) => (
                 </Moment>
                 </span>
                 <p>
-                    {review.content}
+                    {
+                    review.content.length >= MAX_LENGTH && show ?
+                    
+                        
+                        (
+                            <div>
+                            {review.content.substring(0, MAX_LENGTH)}
+                            <p className="see" onClick={showAll}>see more</p>
+                            </div>
+                        )
+                        
+                    
+                        
+                        :
+                        (
+                            <div>
+                                {review.content}
+                                <p className="see" onClick={showLess}>see Less</p>
+                            </div>
+                        )
+                        
+                    }
+                    {/* {review.content}
+                    {console.log(review.content.length)} */}
                 </p>
                 <p>
                     Overall: {review.reviewer.scores.overall}
@@ -39,5 +68,6 @@ const ReviewCard = ({review}) => (
             </div>
         </CardBody>
     </Card>
-)
+    )
+}
 export default ReviewCard;

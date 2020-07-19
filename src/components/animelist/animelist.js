@@ -2,11 +2,11 @@ import React from 'react'
 import Cards from '../cards/cards'
 import {Row, Col} from 'reactstrap'
 const AnimeList = ({animes}) =>{
-    console.log(animes)
         return(
-            <div>
+            <div> 
                 <Row>
-        {animes.map(animeItem =>
+        {animes
+        .map(animeItem =>
             (
                 <Col md="4" key={animeItem.mal_id}>
                 <Cards animeItem={animeItem} />
